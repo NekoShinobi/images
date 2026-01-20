@@ -29,15 +29,15 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: xNinjaKittyx/coder-base
+          - image: ${{ github.repository_owner }}/coder-base
             dockerfile: coder/base/Dockerfile
-          - image: xNinjaKittyx/coder-qmk
+          - image: ${{ github.repository_owner }}/coder-qmk
             dockerfile:  coder/qmk/Dockerfile
-          - image: xNinjaKittyx/coder-rust
+          - image: ${{ github.repository_owner }}/coder-rust
             dockerfile:  coder/rust/Dockerfile
-          - image: xNinjaKittyx/inbound-agent
+          - image: ${{ github.repository_owner }}/inbound-agent
             dockerfile:  jenkins/Dockerfile
-          - image: xNinjaKittyx/rust-chef-sccache
+          - image: ${{ github.repository_owner }}/rust-chef-sccache
             dockerfile:  build/Dockerfile.sccache
     permissions:
       contents: read
