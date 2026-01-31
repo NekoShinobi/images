@@ -1,5 +1,8 @@
 FROM codercom/enterprise-base:ubuntu
 
+# NOTE: This is no longer just rust. It's basically just my dev env at this point. Maybe I'll make smaller builds, but I don't have a need right now.
+
+
 # Add uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
@@ -26,5 +29,11 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no
      apt-get update; \ 
      apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.${VERSION_ID}~${VERSION_CODENAME}" && \ 
      apt-mark hold containerd.io 
+
+# Adding DotNet 9.0 for Jellyfin Plugins
+RUN sudo add-apt-repository ppa:dotnet/backports && \
+    sudo apt-get update && \
+    sudo apt-get install -y dotnet-sdk-9.0
+
 
 USER coder
