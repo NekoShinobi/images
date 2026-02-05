@@ -21,14 +21,13 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no
 
  # TODO: Remove when this issue is fixed: https://github.com/nestybox/sysbox/issues/973 
  # Temporarly fix containerd version 
- RUN set -eux; \ 
-     . /etc/os-release; \ 
-     if [ -z "${VERSION_ID:-}" ] || [ -z "${VERSION_CODENAME:-}" ]; then \ 
-         echo "Unable to detect Ubuntu version metadata"; exit 1; \ 
-     fi; \ 
-     apt-get update; \ 
-     apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.${VERSION_ID}~${VERSION_CODENAME}" && \ 
-     apt-mark hold containerd.io 
+RUN  . /etc/os-release; \ 
+    if [ -z "${VERSION_ID:-}" ] || [ -z "${VERSION_CODENAME:-}" ]; then \ 
+        echo "Unable to detect Ubuntu version metadata"; exit 1; \ 
+    fi; \ 
+    apt-get update && \ 
+    apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.${VERSION_ID}~${VERSION_CODENAME}" && \ 
+    apt-mark hold containerd.io 
 
 # Adding DotNet 9.0 for Jellyfin Plugins
 RUN sudo add-apt-repository ppa:dotnet/backports && \
