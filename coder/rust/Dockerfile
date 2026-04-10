@@ -29,4 +29,7 @@ RUN sudo add-apt-repository ppa:dotnet/backports && \
 # Temporarly fix containerd version 
 RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24.04~noble" && sudo apt-mark hold containerd.io && rm -rf /var/lib/apt/lists/*
 
+# Install claude-cli
+RUN curl -fsSL https://claude.ai/install.sh | bash
+
 USER coder
