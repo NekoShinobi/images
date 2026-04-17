@@ -31,6 +31,9 @@ RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24
 # Install claude-cli
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
+# Install BunJS
+RUN curl -fsSL https://bun.sh/install | bash
+
 RUN sudo add-apt-repository ppa:zhangsongcui3371/fastfetch && \
     sudo apt-get update && \
     sudo apt-get install -y fastfetch
