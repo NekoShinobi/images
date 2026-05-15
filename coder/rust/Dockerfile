@@ -41,7 +41,7 @@ RUN sudo add-apt-repository ppa:zhangsongcui3371/fastfetch && \
     sudo apt-get update && \
     sudo apt-get install -y fastfetch
 
-RUN rustup component add rustfmt
+RUN rustup component add rustfmt && cargo install just
 
 RUN rm -rf /var/lib/apt/lists/*
     
