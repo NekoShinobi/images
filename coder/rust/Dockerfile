@@ -32,7 +32,7 @@ RUN sudo apt-get install -y --allow-downgrades "containerd.io=1.7.28-1~ubuntu.24
 RUN curl -fsSL https://bun.sh/install | bash
 
 # Install Codex
-RUN bun install -g @openai/codex
+RUN ~/.bun/bin/bun install -g @openai/codex
 
 # Install claude-cli
 RUN curl -fsSL https://claude.ai/install.sh | bash
